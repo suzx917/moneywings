@@ -3,6 +3,7 @@ package com.example.loginregistration;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -126,6 +127,17 @@ public class Debug extends AppCompatActivity {
             dbRef.child("balance").setValue(acc.getBalance() + money);
         }
 
+    }
+
+
+    public void Logout(View view){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(),login.class));
+        finish();
+    }
+
+    public void Search(View view){
+        startActivity(new Intent(getApplicationContext(),search.class));
     }
 
 }
