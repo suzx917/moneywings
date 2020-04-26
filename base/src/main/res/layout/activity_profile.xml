@@ -29,7 +29,8 @@
             android:text="Save"
             android:textColor="@android:color/black"
             app:layout_constraintStart_toEndOf="@+id/logout_button"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="207dp" />
 
         <Button
             android:id="@+id/logout_button"
@@ -39,10 +40,12 @@
             android:layout_marginTop="21dp"
             android:layout_marginEnd="235dp"
             android:background="@android:color/holo_red_light"
-            android:text="Logout"
+            android:text="Back"
             app:layout_constraintEnd_toStartOf="@+id/save_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="235dp" />
 
         <TextView
             android:id="@+id/first_textView"
@@ -53,7 +56,8 @@
             android:text="TextView"
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="145dp" />
 
         <TextView
             android:id="@+id/last_textView"
@@ -64,7 +68,8 @@
             android:text="TextView"
             android:textColor="@android:color/black"
             app:layout_constraintStart_toEndOf="@+id/first_textView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="11dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
@@ -148,7 +153,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:layout_marginLeft="8dp">
 
 
             <ImageView
@@ -172,12 +178,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="184dp"
+                android:layout_marginRight="184dp"
                 android:text="password123"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.031"
                 app:layout_constraintStart_toEndOf="@+id/phone_imageview"
-                app:layout_constraintTop_toBottomOf="@+id/email_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/email_textview"
+                android:layout_marginLeft="8dp" />
 
         </LinearLayout>
 
@@ -190,7 +198,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            android:layout_marginLeft="8dp">
 
 
             <ImageView
@@ -224,7 +233,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            android:layout_marginLeft="8dp">
 
 
             <ImageView
@@ -257,7 +267,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+            android:layout_marginLeft="8dp">
 
 
             <ImageView

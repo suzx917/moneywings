@@ -16,6 +16,7 @@ public class ProfileSearch extends AppCompatActivity {
     }
 
     public void BtnInvesti(View view){
-        startActivity(new Intent(getApplicationContext(),Debug.class));
+        startActivity(new Intent(getApplicationContext(),InvestmentAction.class));
     }
+
 }

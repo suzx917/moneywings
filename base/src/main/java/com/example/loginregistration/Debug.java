@@ -132,12 +132,20 @@ public class Debug extends AppCompatActivity {
 
     public void Logout(View view){
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),login.class));
+        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
         finish();
     }
 
     public void Search(View view){
         startActivity(new Intent(getApplicationContext(),search.class));
+    }
+
+    public void Feed(View view){
+        startActivity(new Intent(getApplicationContext(),Feed.class));
+    }
+
+    public void Profile(View view){
+        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
     }
 
 }
