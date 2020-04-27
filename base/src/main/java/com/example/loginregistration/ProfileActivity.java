@@ -27,21 +27,19 @@ public class ProfileActivity extends AppCompatActivity{
     private EditText addressEditText, cardnumEditText, expEditText;
     private ImageView userImageView, emailImageView, addressImageView;
     private ImageView passwordImageView, expImageView,cardnumImageView;
-    private String email;
+    private String email,fname,lname,password;
     private DatabaseReference mDatabase;
     private Button saveButton,backButton;
     private final String TAG = this.getClass().getName().toUpperCase();
     private FirebaseUser user;
     private FirebaseDatabase db;
     private String uid;
-    private profileInfo current;
 
     @Override
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         fnameTextView = findViewById(R.id.first_textView);
         lnameTextView = findViewById(R.id.last_textView);
@@ -62,18 +60,22 @@ public class ProfileActivity extends AppCompatActivity{
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
         db = FirebaseDatabase.getInstance();
-        current = new profileInfo();
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("user").child(uid);
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange( DataSnapshot dataSnapshot) {
 
                 email = user.getEmail();
-                current = dataSnapshot.getValue(profileInfo.class);
-                fnameTextView.setText(current.getFirst());
-                lnameTextView.setText(current.getLast());
+                fname = dataSnapshot.child("first").getValue().toString();
+                lname = dataSnapshot.child("last").getValue().toString();
+                password = dataSnapshot.child("password").getValue().toString();
+
+                fnameTextView.setText(fname);
+                lnameTextView.setText(lname);
                 emailTextView.setText(email);
-                passwordTextView.setText(current.getPassword());
+                passwordTextView.setText(password);
 
             }
             @Override
