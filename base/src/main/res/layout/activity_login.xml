@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login1"
+    android:background="@drawable/hms"
     tools:context=".login">
 
 
@@ -19,7 +19,7 @@
         android:fontFamily="@font/julius_sans_one"
         android:text="Money Wings"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#FAF7F7"
+        android:textColor="#000"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,7 +62,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Email" />
-
 
 
     <Button
