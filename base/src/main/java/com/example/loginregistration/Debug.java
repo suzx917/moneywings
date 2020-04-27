@@ -75,7 +75,7 @@ public class Debug extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 acc = dataSnapshot.getValue(Account.class);
-                text.setText("balance:\n"+acc.getBalance());
+//                text.setText("balance:\n"+acc.getBalance());
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
