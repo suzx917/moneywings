@@ -11,11 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity android:name=".MoneyAccount">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Feed"
             android:label="@string/title_activity_feed"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ProfileSearch" >
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ProfileSearch">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -27,6 +32,7 @@
         </activity>
         <activity android:name=".login">
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -35,7 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Debug">
+        <activity android:name=".DebugActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -47,7 +53,7 @@
         </activity>
         <activity android:name=".Splash">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -11,7 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class InvestmentAction extends AppCompatActivity {
-
+    String bid;
+    FbUtil fbu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,17 +23,21 @@ public class InvestmentAction extends AppCompatActivity {
         Button confirmButton = (Button) findViewById(R.id.confirmButton);
         Button backButton = (Button) findViewById(R.id.backButton);
 
+        Intent intent = getIntent();
+        bid = intent.getStringExtra("bid");
+        fbu = new FbUtil();
+
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String user_entry = amountEntry.getText().toString();
 
-                int amt;
+
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(InvestmentAction.this);
 
                 try {
-                    amt = Integer.parseInt(user_entry.trim());
+                    final int amt = Integer.parseInt(user_entry.trim());
                     amountEntry.setText("");
 
                     // valid, positive integer
@@ -42,7 +47,11 @@ public class InvestmentAction extends AppCompatActivity {
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        // somehow invest the money
+                                        // TODO: somehow invest the money
+                                        int ret = fbu.invest(amt, bid);
+                                        if (ret != 0) {
+                                            throw new IllegalArgumentException("Invalid Amount");
+                                        }
                                     }
                                 });
                         AlertDialog alert = builder.create();
@@ -84,7 +93,7 @@ public class InvestmentAction extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Debug.class));
+                startActivity(new Intent(getApplicationContext(), DebugActivity.class));
             }
         });
 

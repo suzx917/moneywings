@@ -4,28 +4,30 @@ import java.text.SimpleDateFormat;
 
 public class Transaction {
     private String time;
-    private int type;    // 1: deposit 2: withdrawal    (bank)
-                                    // 3: invest 4 spend           (project)
+    private String type;    // (bank)    1: deposit 2: withdrawal
+                            // (project) 3: invest 4: spend 5: stipend 6: mock-up growth
+
     private String senderId;
-    private int senderType;
+    private int senderType;  // 0: admin 1: user 2: business 3: bank
     private String senderName;
 
     private String receiverId;
-    private int receiverType;
+    private int receiverType;  // 0: admin 1: user 2: business 3: bank
     private String receiverName;
 
     private String memo;
 
-    public Transaction(String t, int ty, Account s, Account r, String m) {
-        time = t;
-        type = ty;
+    public Transaction() {}
+
+    public Transaction(String ti, String tp, Account s, Account r) {
+        time = ti;
+        type = tp;
         senderId = s.getId();
         senderType = s.getType();
         senderName = s.getName();
         receiverId = r.getId();
         receiverName = r.getName();
         receiverType = r.getType();
-        memo = m;
     }
 
     public String getTime() {
@@ -36,12 +38,12 @@ public class Transaction {
         this.time = time;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int transactionType) {
-        type = transactionType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getSenderId() {

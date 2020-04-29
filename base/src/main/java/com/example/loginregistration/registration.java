@@ -92,8 +92,8 @@ public class registration extends AppCompatActivity {
                          // TODO: initialize data
                          // user type (1=regular 2=business)
 
-                            // Account
-                         Account acc = new Account(userID,1, Fname,0f);
+                         // Account
+                         Account acc = new Account(userID,1, email,0f);
                          Toast.makeText(registration.this, "new acc", Toast.LENGTH_SHORT).show();
                          regData.child("account").push();
                          regData.child("account").child(userID).setValue(acc);
@@ -101,7 +101,7 @@ public class registration extends AppCompatActivity {
 
 
                          // Jump to debug screen
-                         startActivity(new Intent(getApplicationContext(), Debug.class));
+                         startActivity(new Intent(getApplicationContext(), DebugActivity.class));
 
                         }else{
                          Toast.makeText(registration.this, "Error ! =" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

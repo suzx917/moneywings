@@ -94,7 +94,7 @@ public class ProfileActivity extends AppCompatActivity{
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this,Debug.class));
+                startActivity(new Intent(ProfileActivity.this, DebugActivity.class));
             }
 
         });
