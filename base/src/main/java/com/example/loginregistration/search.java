@@ -25,6 +25,16 @@ import java.util.ArrayList;
 
 import static java.security.AccessController.getContext;
 
+/***************************************************************************************
+*    Title: How to use FirebaseRecyclerAdpater with latest Firebase Dependencies in Android
+*    Author: Ankit Suda
+*    Date: Jan 22, 2018
+*    Availability: https://medium.com/android-grid/how-to-use-firebaserecycleradpater-with-
+*                  latest-firebase-dependencies-in-android-aff7a33adb8b
+*
+***************************************************************************************/
+
+
 public class search extends AppCompatActivity {
     DatabaseReference ref;
     ArrayList<business> list;
