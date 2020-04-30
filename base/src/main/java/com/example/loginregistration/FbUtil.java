@@ -84,7 +84,7 @@ public class FbUtil {
             return 1;
         }
 
-        db.getReference("/Business/01").addListenerForSingleValueEvent(new ValueEventListener() {
+        db.getReference("/Business/"+businessId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 bus = dataSnapshot.getValue(business.class);
