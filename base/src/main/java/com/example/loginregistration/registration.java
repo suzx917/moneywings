@@ -19,6 +19,15 @@ import android.view.*;
 import android.text.*;
 import android.content.*;
 
+/***************************************************************************************
+*    Title: How to Create a Simple Login and Registration App in Android Studio That Displays Username Using Firebase
+*    Author: Samuel Ochuba
+*    Date: Sep 25, 2019
+*    Availability: https://medium.com/@esambooks/how-to-create-a-simple-login-and-registration-app-in-android-studio-that-displays-username-
+*                  using-674f21a0c208
+*
+***************************************************************************************/
+
 
 public class registration extends AppCompatActivity {
     EditText mFullName, mEmail, mPassword, mPasswordConfirm;
