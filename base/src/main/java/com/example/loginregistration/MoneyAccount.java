@@ -5,9 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +38,11 @@ public class MoneyAccount extends AppCompatActivity {
     private AdapterChange adapter;
     private FbUtil fbu;
     private Account acc;
-    private final String TAG = "DEBUG_UACCOUNT";
+    private final String TAG = "DEBUG_MONEYACC";
+
+    private EditText textAmount;
+    private Button buttonDeposit;
+    private Button buttonWithdraw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +58,16 @@ public class MoneyAccount extends AppCompatActivity {
         mLayoutManager.setStackFromEnd(true);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        textAmount = findViewById(R.id.editText4);
+        textAmount.setText("");
+        buttonDeposit = findViewById(R.id.button2);
+        buttonWithdraw = findViewById(R.id.button3);
 
         // load account;
         fbu = new FbUtil();
         acc = new Account();
         db = FirebaseDatabase.getInstance().getReference().child("account").child(fbu.getUid());
-        db.addListenerForSingleValueEvent(new ValueEventListener() {
+        db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 acc = dataSnapshot.getValue(Account.class);
@@ -95,5 +108,68 @@ public class MoneyAccount extends AppCompatActivity {
             }
         });
 
+
+
+        buttonDeposit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user_entry = textAmount.getText().toString();
+
+                try {
+                    final int amt = Integer.parseInt(user_entry.trim());
+                    textAmount.setText("");
+                    if ( amt > 0 ) {
+                        fbu.deposit(amt, "Test Bank");
+                    }
+                }
+                catch (NumberFormatException e) // just in case something weird happens
+                {
+                    Log.e(TAG, "Failed to deposit - " + e.toString());
+                }
+                refresh();
+            }
+        });
+
+        buttonWithdraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String user_entry = textAmount.getText().toString();
+
+                try {
+                    final int amt = Integer.parseInt(user_entry.trim());
+                    textAmount.setText("");
+                    if ( amt > 0 ) {
+                        fbu.withdraw(amt, "Test Bank");
+                    }
+                }
+                catch (NumberFormatException e) // just in case something weird happens
+                {
+                    Log.e(TAG, "Failed to withdraw - " + e.toString());
+                }
+                refresh();
+            }
+        });
+    }
+
+    public void refresh() {
+        db.child(fbu.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    list.clear();
+                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        Change c = snapshot.getValue(Change.class);
+                        list.add(c);
+                        Log.e(TAG,"Added change");
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e(TAG, "Failed to read value");
+            }
+        });
     }
 }

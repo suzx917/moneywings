@@ -47,7 +47,6 @@ public class InvestmentAction extends AppCompatActivity {
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        // TODO: somehow invest the money
                                         int ret = fbu.invest(amt, bid);
                                         if (ret != 0) {
                                             throw new IllegalArgumentException("Invalid Amount");
